@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Convert your files to PDF quickly and securely with our online tool. No installation needed, supports many formats, and ensures high quality output.">
+<meta name="keywords" content="PDF converter, convert PDF, PDF to Word, PDF to JPG, PDF tools, online PDF converter">
+<title>Convert PDF Online | Fast & Secure Tool</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --paper: #faf8f3;
+    --cream: #f2ede3;
+    --rust: #c4440a;
+    --rust-light: #e8531c;
+    --gold: #c9973b;
+    --mid: #6b6560;
+    --border: #e0d9ce;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250, 248, 243, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--rust);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-icon svg { width: 20px; height: 20px; fill: white; }
+
+  .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  .logo-text span { color: var(--rust); }
+
+  nav { display: flex; align-items: center; gap: 36px; }
+
+  nav a {
+    text-decoration: none;
+    color: var(--mid);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--ink); }
+
+  .nav-cta {
+    background: var(--ink);
+    color: var(--white) !important;
+    padding: 10px 22px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--rust) !important; color: white !important; }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--ink); display: block; }
+
+  /* HERO */
+  .hero {
+    padding: 140px 32px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--rust);
+    margin-bottom: 24px;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--rust);
+    border-radius: 50%;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 480px;
+  }
+
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--rust);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .btn-primary:hover { background: var(--rust-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(196,68,10,0.3); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    border: 2px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .btn-outline:hover { border-color: var(--ink); }
+
+  /* UPLOAD ZONE */
+  .hero-upload {
+    background: var(--white);
+    border: 2px dashed var(--border);
+    border-radius: 20px;
+    padding: 48px 32px;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-upload::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(196,68,10,0.03), transparent);
+    pointer-events: none;
+  }
+
+  .hero-upload:hover {
+    border-color: var(--rust);
+    background: #fef9f6;
+    transform: scale(1.01);
+  }
+
+  .upload-icon {
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, var(--rust), var(--rust-light));
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 12px 32px rgba(196,68,10,0.25);
+  }
+
+  .upload-icon svg { width: 34px; height: 34px; fill: white; }
+
+  .hero-upload h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .hero-upload p { color: var(--mid); font-size: 0.9rem; margin-bottom: 24px; }
+
+  .format-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 16px; }
+
+  .chip {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--mid);
+    letter-spacing: 0.05em;
+  }
+
+  .chip.active { background: var(--rust); color: white; border-color: var(--rust); }
+
+  /* TOOLS SECTION */
+  .section { padding: 100px 32px; max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    color: var(--mid);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 56px;
+  }
+
+  /* TOOL CARDS */
+  .tools-category-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .tool-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.25s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tool-card::after {
+    content: '→';
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-size: 1.1rem;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: all 0.25s;
+    color: var(--rust);
+  }
+
+  .tool-card:hover {
+    border-color: var(--rust);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  }
+
+  .tool-card:hover::after { opacity: 1; transform: translateX(0); }
+
+  .tool-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 1.4rem;
+  }
+
+  .tool-card h3 { font-weight: 600; font-size: 1rem; margin-bottom: 6px; }
+  .tool-card p { color: var(--mid); font-size: 0.85rem; line-height: 1.5; }
+
+  /* HOW IT WORKS */
+  .how-section {
+    background: var(--ink);
+    color: var(--white);
+    padding: 100px 32px;
+  }
+
+  .how-inner { max-width: 1200px; margin: 0 auto; }
+
+  .how-section .section-label { color: var(--gold); }
+  .how-section .section-title { color: var(--white); }
+  .how-section .section-desc { color: rgba(255,255,255,0.6); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2px;
+    margin-top: 0;
+  }
+
+  .step {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 40px 32px;
+    position: relative;
+  }
+
+  .step:first-child { border-radius: 16px 0 0 16px; }
+  .step:last-child { border-radius: 0 16px 16px 0; }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step-icon { font-size: 2rem; margin-bottom: 16px; }
+
+  .step h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; color: white; }
+  .step p { color: rgba(255,255,255,0.55); font-size: 0.88rem; line-height: 1.6; }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 24px; }
+
+  .feature-item {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+
+  .feature-icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--cream);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .feature-item h4 { font-weight: 600; margin-bottom: 4px; font-size: 0.95rem; }
+  .feature-item p { color: var(--mid); font-size: 0.875rem; line-height: 1.6; }
+
+  .feature-visual {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 40px;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(196,68,10,0.06) 0%, transparent 60%);
+  }
+
+  .file-flow {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .file-box {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 18px;
+    text-align: center;
+    min-width: 90px;
+  }
+
+  .file-box .ext {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--rust);
+  }
+
+  .file-box .label { font-size: 0.7rem; color: var(--mid); margin-top: 4px; }
+
+  .arrow-convert {
+    width: 48px;
+    height: 48px;
+    background: var(--rust);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 2px; max-width: 800px; margin: 0 auto; }
+
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 22px 28px;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    color: var(--ink);
+    transition: background 0.2s;
+  }
+
+  .faq-q:hover { background: var(--cream); }
+
+  .faq-q .toggle {
+    width: 28px;
+    height: 28px;
+    background: var(--cream);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    color: var(--rust);
+    font-weight: 400;
+  }
+
+  .faq-item.open .faq-q .toggle { background: var(--rust); color: white; transform: rotate(45deg); }
+
+  .faq-a {
+    display: none;
+    padding: 0 28px 22px;
+    color: var(--mid);
+    font-size: 0.93rem;
+    line-height: 1.7;
+  }
+
+  .faq-item.open .faq-a { display: block; }
+
+  /* SEO CONTENT */
+  .seo-section {
+    background: var(--cream);
+    padding: 80px 32px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .seo-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .seo-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .seo-inner p { color: var(--mid); line-height: 1.75; font-size: 0.93rem; margin-bottom: 14px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.5);
+    padding: 64px 32px 36px;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 32px;
+  }
+
+  .footer-brand p {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    max-width: 280px;
+    margin-top: 14px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-logo .logo-icon { background: var(--rust); }
+
+  .footer-logo .logo-text { color: white; }
+
+  .footer-col h4 {
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .footer-col ul li a {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul li a:hover { color: rgba(255,255,255,0.9); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-bottom p { font-size: 0.82rem; }
+
+  .footer-legal { display: flex; gap: 24px; }
+  .footer-legal a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+  .footer-legal a:hover { color: rgba(255,255,255,0.8); }
+
+  /* DIVIDER */
+  .full-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge { animation: fadeUp 0.5s ease both; }
+  .hero h1 { animation: fadeUp 0.5s 0.1s ease both; }
+  .hero p { animation: fadeUp 0.5s 0.2s ease both; }
+  .hero-actions { animation: fadeUp 0.5s 0.3s ease both; }
+  .hero-upload { animation: fadeUp 0.5s 0.15s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 48px; min-height: auto; padding-top: 120px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .seo-inner { grid-template-columns: 1fr; gap: 40px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    nav { display: none; }
+    .hamburger { display: flex; }
+    .step:first-child, .step:last-child { border-radius: 0; }
+  }
+
+  @media (max-width: 600px) {
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .step { border-radius: 0; }
+    .step:first-child { border-radius: 16px 16px 0 0; }
+    .step:last-child { border-radius: 0 0 16px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 17h8v1.5H8V17zm0-3h8v1.5H8V14zm0-3h4v1.5H8V11z"/></svg>
+      </div>
+      <span class="logo-text">Convert <span>PDF</span></span>
+    </a>
+
+    <nav>
+      <a href="#tools">Convert PDF</a>
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#faq">FAQ</a>
+      <a href="#tools" class="nav-cta">Start Converting</a>
+    </nav>
+
+    <div class="hamburger" onclick="this.classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<main>
+<section>
+  <div class="hero">
+    <!-- LEFT -->
+    <div class="hero-content">
+      <div class="hero-badge">Free Online PDF Converter</div>
+      <h1>Convert <em>any</em> PDF<br>in seconds</h1>
+      <p>Transform PDF files to Word, Excel, PowerPoint, JPG, and more with no quality loss. Fast, private, and works right in your browser — no installation needed.</p>
+      <div class="hero-actions">
+        <a href="#tools" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2L8 6h3v6H7L12 17l5-5h-4V6h3L12 2zm-7 16h14v2H5v-2z"/></svg>
+          Choose a Conversion
+        </a>
+        <a href="#how-it-works" class="btn-outline">Learn How It Works</a>
+      </div>
+    </div>
+
+    <!-- RIGHT — Upload Zone -->
+    <div class="hero-upload" onclick="document.getElementById('file-input').click()">
+      <input type="file" id="file-input" accept=".pdf" style="display:none" onchange="handleFile(this)">
+      <div class="upload-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
+      </div>
+      <h3>Drop your PDF here</h3>
+      <p>or click to browse — supports PDF files up to 50MB</p>
+      <a href="#" class="btn-primary" style="margin: 0 auto; display:inline-flex;" onclick="event.stopPropagation(); document.getElementById('file-input').click()">
+        Browse Files
+      </a>
+      <div class="format-chips">
+        <span class="chip active">PDF</span>
+        <span class="chip">→ DOCX</span>
+        <span class="chip">→ XLSX</span>
+        <span class="chip">→ JPG</span>
+        <span class="chip">→ PNG</span>
+        <span class="chip">→ PPTX</span>
+        <span class="chip">→ TXT</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<!-- TOOLS GRID -->
+<section class="section" id="tools">
+  <div class="section-label">All Conversion Tools</div>
+  <h2 class="section-title">Everything you need<br>to work with PDFs</h2>
+  <p class="section-desc">Whether you need to convert a PDF to an editable document, extract images, or compress a file, we've got every PDF task covered.</p>
+
+  <!-- CATEGORY: Convert to PDF -->
+  <div class="tools-category-label">Convert to PDF</div>
+  <div class="tools-grid">
+
+    <a href="tools/jpg-to-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#fff3e0;">📷</div>
+      <h3>JPG to PDF</h3>
+      <p>Combine one or more JPG images into a single, well-formatted PDF document.</p>
+    </a>
+
+    <a href="tools/word-to-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#e8f0fe;">📝</div>
+      <h3>Word to PDF</h3>
+      <p>Convert Word .docx documents to PDF with fonts, layout, and formatting fully intact.</p>
+    </a>
+
+    <a href="tools/excel-to-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#e6f4ea;">📊</div>
+      <h3>Excel to PDF</h3>
+      <p>Turn Excel spreadsheets into shareable, print-ready PDF files without losing data.</p>
+    </a>
+
+    <a href="tools/ppt-to-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#fce8e6;">📑</div>
+      <h3>PPT to PDF</h3>
+      <p>Convert PowerPoint presentations to PDF, preserving all slides, animations, and visuals.</p>
+    </a>
+
+    <a href="tools/autocad-to-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#e8f5e9;">📐</div>
+      <h3>AutoCAD to PDF</h3>
+      <p>Convert DWG and DXF AutoCAD drawings to universally viewable PDF documents.</p>
+    </a>
+
+    <a href="tools/odt-to-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#fef9e7;">🗒️</div>
+      <h3>ODT to PDF</h3>
+      <p>Convert OpenDocument Text (.odt) files from LibreOffice or OpenOffice to PDF format.</p>
+    </a>
+
+    <a href="tools/epub-to-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#f3e5f5;">📖</div>
+      <h3>EPUB to PDF</h3>
+      <p>Transform EPUB eBooks into standard PDF files for easy reading on any device.</p>
+    </a>
+
+    <a href="tools/pages-to-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#e0f7fa;">🍎</div>
+      <h3>Pages to PDF</h3>
+      <p>Convert Apple Pages documents to PDF so they can be opened on any platform.</p>
+    </a>
+
+  </div>
+
+  <!-- CATEGORY: Convert from PDF -->
+  <div class="tools-category-label" style="margin-top:52px;">Convert from PDF</div>
+  <div class="tools-grid">
+
+    <a href="tools/pdf-to-word.html" class="tool-card">
+      <div class="tool-icon" style="background:#e8f0fe;">📄</div>
+      <h3>PDF to Word</h3>
+      <p>Convert PDF documents to fully editable .docx files while preserving formatting and layout.</p>
+    </a>
+
+    <a href="tools/pdf-to-excel.html" class="tool-card">
+      <div class="tool-icon" style="background:#e6f4ea;">📊</div>
+      <h3>PDF to Excel</h3>
+      <p>Extract tables and data from PDF files into organized, editable Excel spreadsheets.</p>
+    </a>
+
+    <a href="tools/pdf-to-ppt.html" class="tool-card">
+      <div class="tool-icon" style="background:#fce8e6;">📑</div>
+      <h3>PDF to PowerPoint</h3>
+      <p>Transform PDF presentations into editable PowerPoint (.pptx) slide decks with ease.</p>
+    </a>
+
+    <a href="tools/pdf-to-jpg.html" class="tool-card">
+      <div class="tool-icon" style="background:#fff3e0;">🖼️</div>
+      <h3>PDF to JPG</h3>
+      <p>Convert every page of your PDF into high-quality JPG images, ready for sharing or editing.</p>
+    </a>
+
+    <a href="tools/pdf-to-png.html" class="tool-card">
+      <div class="tool-icon" style="background:#f3e5f5;">🎨</div>
+      <h3>PDF to PNG</h3>
+      <p>Export PDF pages as transparent-background PNG files, perfect for design use.</p>
+    </a>
+
+    <a href="tools/pdf-to-pdfa.html" class="tool-card">
+      <div class="tool-icon" style="background:#e8f5e9;">🏛️</div>
+      <h3>PDF to PDF/A</h3>
+      <p>Convert standard PDFs to the archival PDF/A format for long-term document preservation.</p>
+    </a>
+
+    <a href="tools/extract-pdf-images.html" class="tool-card">
+      <div class="tool-icon" style="background:#fef9e7;">🖼️</div>
+      <h3>Extract PDF Images</h3>
+      <p>Pull all embedded images from a PDF and download them as individual image files.</p>
+    </a>
+
+  </div>
+
+  <!-- CATEGORY: Organize & Edit PDF -->
+  <div class="tools-category-label" style="margin-top:52px;">Organize & Edit PDF</div>
+  <div class="tools-grid">
+
+    <a href="tools/merge-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#e6f4ea;">📎</div>
+      <h3>Merge PDF</h3>
+      <p>Combine multiple PDF files into one seamless document in just a few clicks.</p>
+    </a>
+
+    <a href="tools/split-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#f3e5f5;">✂️</div>
+      <h3>Split PDF</h3>
+      <p>Divide a large PDF into individual pages or custom page ranges as separate files.</p>
+    </a>
+
+    <a href="tools/delete-pdf-pages.html" class="tool-card">
+      <div class="tool-icon" style="background:#fce8e6;">🗑️</div>
+      <h3>Delete PDF Pages</h3>
+      <p>Remove unwanted pages from your PDF document quickly and without re-uploading.</p>
+    </a>
+
+    <a href="tools/rotate-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#e0f7fa;">🔄</div>
+      <h3>Rotate PDF</h3>
+      <p>Rotate specific pages or your entire PDF document to the correct orientation.</p>
+    </a>
+
+    <a href="tools/redact-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#fef9e7;">⬛</div>
+      <h3>Redact PDF</h3>
+      <p>Permanently black out sensitive text, names, or data from PDF documents before sharing.</p>
+    </a>
+
+    <a href="tools/flatten-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#e8f5e9;">📋</div>
+      <h3>Flatten PDF</h3>
+      <p>Flatten form fields and annotations into the page so content can no longer be edited.</p>
+    </a>
+
+  </div>
+
+  <!-- CATEGORY: Optimize & Secure PDF -->
+  <div class="tools-category-label" style="margin-top:52px;">Optimize & Secure PDF</div>
+  <div class="tools-grid">
+
+    <a href="tools/compress-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#fce8e6;">🗜️</div>
+      <h3>Compress PDF</h3>
+      <p>Reduce PDF file size without sacrificing readability — ideal for email and web uploads.</p>
+    </a>
+
+    <a href="tools/protect-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#e8f0fe;">🔐</div>
+      <h3>Protect PDF</h3>
+      <p>Add password protection and permissions to your PDF to control who can open or edit it.</p>
+    </a>
+
+    <a href="tools/unlock-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#e6f4ea;">🔓</div>
+      <h3>Unlock PDF</h3>
+      <p>Remove password restrictions from a PDF you own so it can be freely opened and shared.</p>
+    </a>
+
+    <a href="tools/repair-pdf.html" class="tool-card">
+      <div class="tool-icon" style="background:#fff3e0;">🔧</div>
+      <h3>Repair PDF</h3>
+      <p>Fix corrupted or damaged PDF files that won't open properly and restore their content.</p>
+    </a>
+
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title" style="max-width:560px;">Three steps to a<br>converted file</h2>
+    <p class="section-desc" style="margin-bottom:52px;">No sign-up, no software download. Converting your PDF is as simple as picking a file, selecting the format you need, and clicking convert.</p>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon">📂</div>
+        <h3>Upload Your File</h3>
+        <p>Drag and drop your PDF onto the converter or click to browse your device. Files stay on your device until processing begins.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon">⚙️</div>
+        <h3>Choose Output Format</h3>
+        <p>Select your target format from Word, Excel, JPG, PNG, PowerPoint, and more. You can adjust quality and page range settings too.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon">⬇️</div>
+        <h3>Download the Result</h3>
+        <p>Your file is processed and available for instant download. Converted files are automatically deleted from our servers within one hour.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-icon">🔒</div>
+        <h3>Your Privacy Is Protected</h3>
+        <p>All transfers are encrypted with SSL. We never share, sell, or access your documents — your data belongs to you, always.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="features-grid">
+    <div>
+      <div class="section-label">Why Choose PDFForge</div>
+      <h2 class="section-title">Built for<br>real workflows</h2>
+      <p class="section-desc">PDFForge is designed for speed, accuracy, and simplicity — whether you're a student, professional, or business team.</p>
+
+      <ul class="feature-list">
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🔐</div>
+          <div>
+            <h4>End-to-End Encrypted</h4>
+            <p>Your documents are transferred over SSL and deleted automatically. We never store or access your files.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">⚡</div>
+          <div>
+            <h4>Fast Conversion Engine</h4>
+            <p>Our optimized PDF processing pipeline handles even large, complex documents in seconds.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">📐</div>
+          <div>
+            <h4>Accurate Formatting</h4>
+            <p>Fonts, tables, images, and column layouts are preserved with industry-leading conversion accuracy.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🌐</div>
+          <div>
+            <h4>Works on Any Device</h4>
+            <p>No software to install. Access PDFForge from any browser on desktop, tablet, or smartphone.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🗂️</div>
+          <div>
+            <h4>Batch Conversion</h4>
+            <p>Convert multiple PDF files at once to save time on repetitive document tasks.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="feature-visual">
+      <p style="font-size:0.8rem;color:var(--mid);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Conversion Preview</p>
+      <div class="file-flow">
+        <div class="file-box">
+          <div class="ext">PDF</div>
+          <div class="label">Original</div>
+        </div>
+        <div class="arrow-convert">→</div>
+        <div class="file-box">
+          <div class="ext">DOCX</div>
+          <div class="label">Converted</div>
+        </div>
+      </div>
+      <p style="color:var(--mid);font-size:0.8rem;text-align:center;">Layout, fonts & tables preserved</p>
+
+      <div style="width:100%;background:var(--cream);border-radius:12px;padding:16px 20px;border:1px solid var(--border);margin-top:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <span style="font-size:0.8rem;font-weight:600;">Processing speed</span>
+          <span style="font-size:0.8rem;color:var(--rust);font-weight:700;">Fast</span>
+        </div>
+        <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+          <div style="height:100%;width:88%;background:linear-gradient(90deg,var(--rust),var(--rust-light));border-radius:3px;animation:loadBar 2s ease infinite alternate;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:14px;">
+          <span style="font-size:0.75rem;color:var(--mid);">Format accuracy</span>
+          <span style="font-size:0.75rem;font-weight:600;">High</span>
+        </div>
+        <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:6px;">
+          <div style="height:100%;width:95%;background:linear-gradient(90deg,#3a7bd5,#5b9ef7);border-radius:3px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes loadBar { from{width:72%} to{width:95%} }
+</style>
+
+<!-- SEO CONTENT -->
+<section class="seo-section">
+  <div class="seo-inner">
+    <div>
+      <h2>What is an Online PDF Converter?</h2>
+      <p>An online PDF converter is a web-based tool that lets you transform PDF files into other document formats — like Word, Excel, or images — without installing any software. Unlike desktop applications, online converters work instantly from any browser.</p>
+      <p>Convert PDF uses advanced document parsing technology to analyze the structure of your PDF and accurately reconstruct it in the target format. This means tables stay as tables, headings remain headings, and images appear in their original positions — not scattered across the page.</p>
+      <p>Whether you're editing a scanned contract, extracting data for a spreadsheet, or sharing a presentation, converting your PDF gives you the flexibility to work with your content in any application.</p>
+    </div>
+    <div>
+      <h2>Converting PDFs: Common Use Cases</h2>
+      <p><strong>PDF to Word:</strong> Ideal when you need to edit a received document — for example, updating a contract, fixing a form, or repurposing an existing report without retyping everything from scratch.</p>
+      <p><strong>PDF to Excel:</strong> Useful for extracting financial tables, invoice data, or research datasets from PDFs so you can perform calculations and analysis in a spreadsheet environment.</p>
+      <p><strong>PDF to JPG/PNG:</strong> Common for sharing page previews on websites, social media, or presentations where editable content isn't needed — just a clean visual.</p>
+      <p><strong>Compressing PDFs:</strong> When your PDF is too large to attach to an email or upload to a web platform, compression reduces the file size while maintaining readability.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-label" style="text-align:center;">FAQ</div>
+  <h2 class="section-title" style="text-align:center;">Frequently asked questions</h2>
+  <p class="section-desc" style="margin-bottom:40px;text-align:center;margin-left:auto;margin-right:auto;">Got a question about converting PDFs? Here are answers to the most common ones.</p>
+
+  <div class="faq-list">
+    <div class="faq-item open">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Is Convert PDF free to use?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes. Convert PDF offers free PDF conversion for all core formats including PDF to Word, PDF to JPG, and PDF to Excel. Free conversions support files up to 50MB. A Pro plan is available for larger files, batch processing, and priority conversion speed.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Are my files safe and private?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">All file transfers are protected with 256-bit SSL encryption. Your uploaded files are processed in memory and permanently deleted from our servers within 60 minutes of conversion. We do not share, analyze, or store your document content.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Do I need to create an account?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">No account or registration is required to use Convert PDF. Just upload your file, choose a format, and download the result. Creating a free account gives you access to your conversion history and higher file size limits.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        What file formats can PDFForge convert?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Convert PDF supports converting PDF to Word (.docx), Excel (.xlsx), PowerPoint (.pptx), JPG, PNG, and plain text (.txt). It also converts from Word, JPG, and PNG into PDF. Additional formats including HTML and EPUB are available on the Pro plan.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Will the converted file look the same as the original?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Convert PDF preserves formatting with high accuracy for most documents — including fonts, tables, headers, and image placements. Scanned PDFs (images of paper documents) are processed with OCR and may have minor layout differences depending on document quality.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Can I convert a PDF on my phone or tablet?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes. Convert PDF is fully responsive and works in any modern mobile browser. You can upload a PDF directly from your device's file storage, Google Drive, or cloud apps and download the converted file to your phone.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        How do I convert a password-protected PDF?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">To convert a password-protected PDF, you'll need to enter the document password when prompted during upload. Convert PDF can then unlock and convert the file. Note: we only support converting files you own or have legal permission to access.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section style="background:var(--rust);padding:50px 32px;text-align:center;">
+  <div style="max-width:640px;margin:0 auto;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:white;font-weight:900;margin-bottom:12px;letter-spacing:-0.02em;">Start converting PDFs<br><em style="font-style:italic;opacity:0.85;">for free, right now.</em></h2>
+    <p style="color:rgba(255,255,255,0.75);font-size:1.05rem;line-height:1.6;margin-bottom:24px;">No sign-up. No software. Just fast, accurate PDF conversion from any device.</p>
+    <a href="#tools" class="btn-primary" style="background:white;color:var(--rust);font-size:0.9rem;padding:10px 28px;">Browse All Tools →</a>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5z"/></svg>
+          </div>
+          <span class="logo-text">Convert <span>PDF</span></span>
+        </div>
+        <p>A professional-grade PDF converter for everyone. Fast, private, and completely browser-based — no software required.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Convert From PDF</h4>
+        <ul>
+          <li><a href="#">PDF to Word</a></li>
+          <li><a href="#">PDF to Excel</a></li>
+          <li><a href="#">PDF to PowerPoint</a></li>
+          <li><a href="#">PDF to JPG</a></li>
+          <li><a href="#">PDF to PNG</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Convert to PDF</h4>
+        <ul>
+          <li><a href="#">Word to PDF</a></li>
+          <li><a href="#">Excel to PDF</a></li>
+          <li><a href="#">JPG to PDF</a></li>
+          <li><a href="#">PPT to PDF</a></li>
+          <li><a href="#">AutoCAD to PDF</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>PDF Tools</h4>
+        <ul>
+          <li><a href="#">Merge PDF</a></li>
+          <li><a href="#">Split PDF</a></li>
+          <li><a href="#">Compress PDF</a></li>
+          <li><a href="#">Protect PDF</a></li>
+          <li><a href="#">Repair PDF</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Convert PDF. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFAQ(btn) {
+    const item = btn.closest('.faq-item');
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  function handleFile(input) {
+    if (input.files && input.files[0]) {
+      const name = input.files[0].name;
+      alert(`File selected: ${name}\n\nIn the live version, conversion would begin now.`);
+    }
+  }
+
+  function selectTool(name) {
+    // Tool cards now link directly to individual pages
+    // This function is kept for backward compatibility
+    const toolMap = {
+      'JPG to PDF': 'tools/jpg-to-pdf.html',
+      'Word to PDF': 'tools/word-to-pdf.html',
+      'Excel to PDF': 'tools/excel-to-pdf.html',
+      'PPT to PDF': 'tools/ppt-to-pdf.html',
+      'AutoCAD to PDF': 'tools/autocad-to-pdf.html',
+      'ODT to PDF': 'tools/odt-to-pdf.html',
+      'EPUB to PDF': 'tools/epub-to-pdf.html',
+      'Pages to PDF': 'tools/pages-to-pdf.html',
+      'PDF to Word': 'tools/pdf-to-word.html',
+      'PDF to Excel': 'tools/pdf-to-excel.html',
+      'PDF to PPT': 'tools/pdf-to-ppt.html',
+      'PDF to JPG': 'tools/pdf-to-jpg.html',
+      'PDF to PNG': 'tools/pdf-to-png.html',
+      'PDF to PDF/A': 'tools/pdf-to-pdfa.html',
+      'Extract PDF Images': 'tools/extract-pdf-images.html',
+      'Merge PDF': 'tools/merge-pdf.html',
+      'Split PDF': 'tools/split-pdf.html',
+      'Delete PDF Pages': 'tools/delete-pdf-pages.html',
+      'Rotate PDF': 'tools/rotate-pdf.html',
+      'Redact PDF': 'tools/redact-pdf.html',
+      'Flatten PDF': 'tools/flatten-pdf.html',
+      'Compress PDF': 'tools/compress-pdf.html',
+      'Protect PDF': 'tools/protect-pdf.html',
+      'Unlock PDF': 'tools/unlock-pdf.html',
+      'Repair PDF': 'tools/repair-pdf.html'
+    };
+    if (toolMap[name]) {
+      window.location.href = toolMap[name];
+    }
+  }
+
+  // Animate tools on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.tool-card').forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = `opacity 0.4s ${i * 0.06}s ease, transform 0.4s ${i * 0.06}s ease, border-color 0.25s, box-shadow 0.25s`;
+    observer.observe(card);
+  });
+</script>
+
+</body>
+</html>

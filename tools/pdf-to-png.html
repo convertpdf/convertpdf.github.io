@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Transform PDF pages into high-quality PNG images. Extract each page as a separate PNG file with crisp text and graphics, perfect for web use or presentations.">
+<title>PDF to PNG Converter – Pages to Images | Convert PDF</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 17h8v1.5H8V17zm0-3h8v1.5H8V14zm0-3h4v1.5H8V11z"/></svg>
+      </div>
+      <span class="logo-text">Convert <span>PDF</span></span>
+    </a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../index.html#tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<main class="tool-container">
+  <div class="tool-header">
+    <h1>PDF to PNG Converter</h1>
+    <p>Convert PDF pages to high-quality PNG images with transparent background support. Free, browser-based conversion — no uploads, no sign-up needed.</p>
+  </div>
+
+  <div class="upload-zone" id="upload-zone">
+    <input type="file" id="file-input" accept=".pdf" style="display:none">
+    <div class="upload-icon">
+      <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
+    </div>
+    <h3>Drop your PDF here</h3>
+    <p>or click to browse — supports PDF files up to 50MB</p>
+    <button class="btn-primary" onclick="document.getElementById('file-input').click()">Select PDF</button>
+  </div>
+
+  <div class="error-message" id="error-message"></div>
+
+  <div class="file-info" id="file-info">
+    <h4>📄 Selected File</h4>
+    <p id="file-name"></p>
+    <p id="file-size"></p>
+  </div>
+
+  <div class="progress-bar" id="progress-bar">
+    <div class="progress-fill"></div>
+  </div>
+
+  <div class="result-section" id="result-section">
+    <div style="text-align:center;padding:40px;background:var(--cream);border-radius:12px;border:1px solid var(--border);">
+      <div style="font-size:3rem;margin-bottom:16px;">✅</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:12px;">Conversion Complete!</h3>
+      <p style="color:var(--mid);margin-bottom:24px;" id="result-text"></p>
+      <div id="download-buttons"></div>
+    </div>
+  </div>
+</main><hr class="full-divider">
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title" style="max-width:560px;">Three steps to convert<br>PDF to PNG</h2>
+    <p class="section-desc" style="margin-bottom:52px;">No sign-up, no software download. Converting your PDF to PNG is as simple as uploading your file and clicking convert.</p>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon">Upload</div>
+        <h3>Upload Your PDF</h3>
+        <p>Drag and drop your PDF or click to browse. The file is processed entirely on your device.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon">⚙️</div>
+        <h3>Automatic Conversion</h3>
+        <p>Each page is rendered as a high-resolution PNG image, preserving all text, graphics, and transparencies.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon">⬇️</div>
+        <h3>Download Your PNG Images</h3>
+        <p>Download individual pages or all images at once as a zip file. Instant access, no waiting.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-icon">🔒</div>
+        <h3>Your Privacy Is Protected</h3>
+        <p>All conversion happens locally in your browser. Your PDF never leaves your device.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="features-grid">
+    <div>
+      <div class="section-label">Why Use Our PDF to PNG Converter</div>
+      <h2 class="section-title">Crisp PNG images from every PDF page</h2>
+      <p class="section-desc">Export PDF pages as lossless PNG images — ideal for web graphics, presentations, and any use case where image quality is paramount.</p>
+
+      <ul class="feature-list">
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🔐</div>
+          <div>
+            <h4>100% Private Processing</h4>
+            <p>Your PDF is converted in your browser with no server uploads. All content stays on your device.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">⚡</div>
+          <div>
+            <h4>Fast Conversion</h4>
+            <p>Export PDF pages to PNG format in seconds, regardless of document size.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">📐</div>
+          <div>
+            <h4>Lossless Quality</h4>
+            <p>PNG is a lossless format — your exported images retain perfect sharpness and clarity with no compression artifacts.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🌐</div>
+          <div>
+            <h4>Works on Any Device</h4>
+            <p>Convert PDF to PNG from any modern browser on desktop, tablet, or mobile.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🗂️</div>
+          <div>
+            <h4>Transparency Support</h4>
+            <p>PNG supports transparent backgrounds, making exported images ideal for web and graphic design use.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="feature-visual">
+      <p style="font-size:0.8rem;color:var(--mid);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Conversion Preview</p>
+      <div class="file-flow">
+        <div class="file-box">
+          <div class="ext">PDF</div>
+          <div class="label"></div>
+        </div>
+        <div class="arrow-convert">→</div>
+        <div class="file-box">
+          <div class="ext">PNG</div>
+          <div class="label">Converted</div>
+        </div>
+      </div>
+      <p style="color:var(--mid);font-size:0.8rem;text-align:center;">Conversion complete</p>
+
+      <div style="width:100%;background:var(--cream);border-radius:12px;padding:16px 20px;border:1px solid var(--border);margin-top:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <span style="font-size:0.8rem;font-weight:600;">Processing speed</span>
+          <span style="font-size:0.8rem;color:var(--rust);font-weight:700;">Fast</span>
+        </div>
+        <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+          <div style="height:100%;width:88%;background:linear-gradient(90deg,var(--rust),var(--rust-light));border-radius:3px;animation:loadBar 2s ease infinite alternate;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:14px;">
+          <span style="font-size:0.75rem;color:var(--mid);">Format accuracy</span>
+          <span style="font-size:0.75rem;font-weight:600;">High</span>
+        </div>
+        <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:6px;">
+          <div style="height:100%;width:95%;background:linear-gradient(90deg,#3a7bd5,#5b9ef7);border-radius:3px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes loadBar { from{width:72%} to{width:95%} }
+</style>
+
+<!-- SEO CONTENT -->
+<section class="seo-section">
+  <div class="seo-inner">
+    <div>
+      <h2>Why Convert PDF to PNG?</h2>
+      <p>PNG is the preferred image format when quality and clarity are critical. Unlike JPEG, PNG uses lossless compression — meaning no quality is lost when saving, making it ideal for graphics, diagrams, charts, text-heavy images, and anything requiring pixel-perfect accuracy.</p>
+      <p>Converting PDF pages to PNG is common in web design, software documentation, and content creation workflows. PNG images can be placed directly in web pages, design tools like Figma or Canva, presentations, or apps — without the visual degradation that JPEG compression introduces.</p>
+      <p>Our free PDF to PNG converter processes everything locally in your browser. Your PDF pages are rendered as high-resolution PNGs without ever being transmitted to an external server.</p>
+    </div>
+    <div>
+      <h2>Common Uses for PDF to PNG Conversion</h2>
+      <p><strong>Web Graphics & Publishing:</strong> Convert PDF diagrams, infographics, or report pages to PNG for embedding in websites and blogs.</p>
+      <p><strong>Design & Prototyping:</strong> Import PDF mockups or layouts into Figma, Adobe XD, Canva, or Photoshop as PNG images.</p>
+      <p><strong>Documentation Screenshots:</strong> Convert PDF documentation pages to PNG for use in software guides, tutorials, or help articles.</p>
+      <p><strong>Slide Backgrounds:</strong> Export PDF designs as PNG images for use as backgrounds or visual elements in presentations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-label" style="text-align:center;">FAQ</div>
+  <h2 class="section-title" style="text-align:center;">Frequently asked questions</h2>
+  <p class="section-desc" style="margin-bottom:40px;text-align:center;margin-left:auto;margin-right:auto;">Got questions? Here are answers to the most common ones.</p>
+
+  <div class="faq-list">
+    <div class="faq-item open">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Is the PDF to PNG converter free?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes, completely free with no account or limits.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Are my files kept private?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes. All conversion is browser-based — your PDF never leaves your device.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        What is the resolution of the output PNG?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Pages are rendered at high resolution for sharp, print-ready images.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Does PNG support transparency?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes. PNG supports transparency, and our tool preserves any transparent areas from your PDF.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Can I convert specific pages only?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes. You can choose to convert all pages or select specific pages to export as PNG.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        How is PNG different from JPG for PDF export?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">PNG is lossless and supports transparency, making it better for graphics and text. JPG is smaller but uses lossy compression.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section style="background:var(--rust);padding:50px 32px;text-align:center;">
+  <div style="max-width:640px;margin:0 auto;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:white;font-weight:900;margin-bottom:12px;letter-spacing:-0.02em;">Need other PDF tools?<br><em style="font-style:italic;opacity:0.85;">Explore our full suite.</em></h2>
+    <p style="color:rgba(255,255,255,0.75);font-size:1.05rem;line-height:1.6;margin-bottom:24px;">Convert, merge, split, compress, and more — all in one place.</p>
+    <a href="../index.html#tools" class="btn-primary" style="background:white;color:var(--rust);font-size:0.9rem;padding:10px 28px;">Browse All Tools →</a>
+  </div>
+</section>
+
+<script src="../shared.js"></script>
+<script>
+function toggleFAQ(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
+
+<script src="../shared.js"></script>
+<script>
+let selectedFile = null;
+let imageBlobs = [];
+
+const uploadZone = document.getElementById('upload-zone');
+const fileInput = document.getElementById('file-input');
+
+setupDragAndDrop(uploadZone, fileInput, handleFileSelect);
+
+async function handleFileSelect(file) {
+  hideError();
+  selectedFile = file;
+  
+  if (!file.type.includes('pdf') && !file.name.toLowerCase().endsWith('.pdf')) {
+    showError('Please select a valid PDF file.');
+    return;
+  }
+
+  showFileInfo(file);
+  document.getElementById('result-section').classList.remove('active');
+  imageBlobs = [];
+  
+  await convertToPNG();
+}
+
+async function convertToPNG() {
+  try {
+    showProgress();
+    hideError();
+
+    const arrayBuffer = await selectedFile.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    imageBlobs = [];
+
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const viewport = page.getViewport({ scale: 2.0 });
+      
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      
+      await page.render({
+        canvasContext: ctx,
+        viewport: viewport
+      }).promise;
+
+      canvas.toBlob((blob) => {
+        imageBlobs.push(blob);
+        if (imageBlobs.length === pdf.numPages) {
+          displayResults();
+        }
+      }, 'image/png');
+    }
+  } catch (error) {
+    showError('Error converting PDF to PNG: ' + error.message);
+  }
+}
+
+function displayResults() {
+  const resultText = document.getElementById('result-text');
+  const downloadButtons = document.getElementById('download-buttons');
+  
+  resultText.textContent = `Converted ${imageBlobs.length} page(s) to PNG images.`;
+  downloadButtons.innerHTML = '';
+  
+  if (imageBlobs.length === 1) {
+    const btn = document.createElement('button');
+    btn.className = 'download-btn';
+    btn.textContent = 'Download PNG';
+    btn.onclick = () => downloadFile(imageBlobs[0], `${selectedFile.name.replace('.pdf', '')}-page-1.png`);
+    downloadButtons.appendChild(btn);
+  } else {
+    imageBlobs.forEach((blob, index) => {
+      const btn = document.createElement('button');
+      btn.className = 'download-btn';
+      btn.style.margin = '8px';
+      btn.textContent = `Download Page ${index + 1}`;
+      btn.onclick = () => downloadFile(blob, `${selectedFile.name.replace('.pdf', '')}-page-${index + 1}.png`);
+      downloadButtons.appendChild(btn);
+    });
+  }
+  
+  showResult();
+}
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5z"/></svg>
+          </div>
+          <span class="logo-text">Convert <span>PDF</span></span>
+        </div>
+        <p>A professional-grade PDF converter for everyone. Fast, private, and completely browser-based — no software required.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Convert From PDF</h4>
+        <ul>
+          <li><a href="#">PDF to Word</a></li>
+          <li><a href="#">PDF to Excel</a></li>
+          <li><a href="#">PDF to PowerPoint</a></li>
+          <li><a href="#">PDF to JPG</a></li>
+          <li><a href="#">PDF to PNG</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Convert to PDF</h4>
+        <ul>
+          <li><a href="#">Word to PDF</a></li>
+          <li><a href="#">Excel to PDF</a></li>
+          <li><a href="#">JPG to PDF</a></li>
+          <li><a href="#">PPT to PDF</a></li>
+          <li><a href="#">AutoCAD to PDF</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>PDF Tools</h4>
+        <ul>
+          <li><a href="#">Merge PDF</a></li>
+          <li><a href="#">Split PDF</a></li>
+          <li><a href="#">Compress PDF</a></li>
+          <li><a href="#">Protect PDF</a></li>
+          <li><a href="#">Repair PDF</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Convert PDF. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

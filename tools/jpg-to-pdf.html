@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Turn JPG images into organized PDF documents in seconds. Adjust page size, orientation, and margins while keeping image clarity and sharpness.">
+<title>JPG to PDF Converter | Image to PDF Online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 17h8v1.5H8V17zm0-3h8v1.5H8V14zm0-3h4v1.5H8V11z"/></svg>
+      </div>
+      <span class="logo-text">Convert <span>PDF</span></span>
+    </a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../index.html#tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<main class="tool-container">
+  <div class="tool-header">
+    <h1>JPG to PDF Converter</h1>
+    <p>Convert JPG and JPEG images to PDF in seconds. Combine single or multiple images into a professionally formatted PDF — free, private, and browser-based.</p>
+  </div>
+
+  <div class="upload-zone" id="upload-zone">
+    <input type="file" id="file-input" accept="image/jpeg,image/jpg" multiple style="display:none">
+    <div class="upload-icon">
+      <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
+    </div>
+    <h3>Drop your JPG images here</h3>
+    <p>or click to browse — you can select multiple images</p>
+    <button class="btn-primary" onclick="document.getElementById('file-input').click()">Select Images</button>
+  </div>
+
+  <div class="error-message" id="error-message"></div>
+
+  <div class="file-info" id="file-info">
+    <h4>📷 Selected Images</h4>
+    <p id="file-count"></p>
+    <p id="file-list"></p>
+  </div>
+
+  <div class="progress-bar" id="progress-bar">
+    <div class="progress-fill"></div>
+  </div>
+
+  <div class="result-section" id="result-section">
+    <div style="text-align:center;padding:40px;background:var(--cream);border-radius:12px;border:1px solid var(--border);">
+      <div style="font-size:3rem;margin-bottom:16px;">✅</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:12px;">PDF Created Successfully!</h3>
+      <p style="color:var(--mid);margin-bottom:24px;">Your JPG images have been combined into a PDF document.</p>
+      <button class="download-btn" id="download-btn">Download PDF</button>
+    </div>
+  </div>
+</main>
+
+<hr class="full-divider">
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title" style="max-width:560px;">Three steps to convert<br>JPG images to PDF</h2>
+    <p class="section-desc" style="margin-bottom:52px;">No sign-up, no software download. Converting your JPG images to PDF is as simple as selecting your images and clicking convert.</p>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon">Upload</div>
+        <h3>Upload Your JPG Images</h3>
+        <p>Drag and drop one or more JPG/JPEG images or click to browse. Select as many images as you need.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon">⚙️</div>
+        <h3>Automatic Conversion</h3>
+        <p>Our tool embeds your images into a properly formatted PDF document, one image per page.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon">⬇️</div>
+        <h3>Download Your PDF</h3>
+        <p>Your images are now a single, shareable PDF. Download it instantly.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-icon">🔒</div>
+        <h3>Your Privacy Is Protected</h3>
+        <p>All conversion happens in your browser. Your images are never uploaded to any server.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="features-grid">
+    <div>
+      <div class="section-label">Why Use Our JPG to PDF Converter</div>
+      <h2 class="section-title">Turn photos into professional PDFs</h2>
+      <p class="section-desc">Our JPG to PDF converter is designed for speed, quality, and simplicity — perfect for creating photo albums, portfolios, or document collections.</p>
+
+      <ul class="feature-list">
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🔐</div>
+          <div>
+            <h4>100% Private Processing</h4>
+            <p>Your images never leave your device. All conversion is browser-based with zero server uploads.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">⚡</div>
+          <div>
+            <h4>Fast Conversion</h4>
+            <p>Convert single images or batch-convert multiple JPGs into a merged PDF in seconds.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">📐</div>
+          <div>
+            <h4>Maintains Image Quality</h4>
+            <p>Images are embedded at their original resolution — no quality loss or compression.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🌐</div>
+          <div>
+            <h4>Works on Any Device</h4>
+            <p>Convert JPGs to PDF from any browser on desktop, tablet, or smartphone.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🗂️</div>
+          <div>
+            <h4>Combine Multiple Images</h4>
+            <p>Select multiple JPG files to combine them into one multi-page PDF document.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="feature-visual">
+      <p style="font-size:0.8rem;color:var(--mid);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Conversion Preview</p>
+      <div class="file-flow">
+        <div class="file-box">
+          <div class="ext">JPG</div>
+          <div class="label">Original</div>
+        </div>
+        <div class="arrow-convert">→</div>
+        <div class="file-box">
+          <div class="ext">PDF</div>
+          <div class="label"></div>
+        </div>
+      </div>
+      <p style="color:var(--mid);font-size:0.8rem;text-align:center;">Images combined into PDF</p>
+
+      <div style="width:100%;background:var(--cream);border-radius:12px;padding:16px 20px;border:1px solid var(--border);margin-top:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <span style="font-size:0.8rem;font-weight:600;">Processing speed</span>
+          <span style="font-size:0.8rem;color:var(--rust);font-weight:700;">Instant</span>
+        </div>
+        <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+          <div style="height:100%;width:95%;background:linear-gradient(90deg,var(--rust),var(--rust-light));border-radius:3px;animation:loadBar 2s ease infinite alternate;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:14px;">
+          <span style="font-size:0.75rem;color:var(--mid);">Image quality</span>
+          <span style="font-size:0.75rem;font-weight:600;">Preserved</span>
+        </div>
+        <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:6px;">
+          <div style="height:100%;width:100%;background:linear-gradient(90deg,#3a7bd5,#5b9ef7);border-radius:3px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes loadBar { from{width:90%} to{width:100%} }
+</style>
+
+<!-- SEO CONTENT -->
+<section class="seo-section">
+  <div class="seo-inner">
+    <div>
+      <h2>Why Convert JPG to PDF?</h2>
+      <p>JPEG images are great for photos, but they're not ideal for document sharing. PDFs provide a fixed layout that looks identical on every device, can combine multiple images into one file, and are supported by virtually every email client, printer, and document viewer.</p>
+      <p>Converting JPG to PDF is especially useful for digitizing physical documents — receipts, contracts, ID cards, handwritten notes, or photos of whiteboards. Instead of sharing a pile of separate images, you can deliver one organized PDF file.</p>
+      <p>Our free JPG to PDF converter processes everything in your browser. Your photos — whether personal or professional — never leave your device, ensuring complete privacy.</p>
+    </div>
+    <div>
+      <h2>Common Uses for JPG to PDF Conversion</h2>
+      <p><strong>Digitizing Scanned Documents:</strong> Convert photos of receipts, contracts, or ID documents into PDFs for organized digital storage.</p>
+      <p><strong>Portfolio Submissions:</strong> Combine multiple photo samples or artwork JPEGs into a single professional PDF portfolio.</p>
+      <p><strong>Submitting Forms:</strong> Many submission portals require PDFs. Convert your filled-out form photos to PDF format quickly.</p>
+      <p><strong>Creating Photo Albums:</strong> Turn a collection of JPG photos into a single multi-page PDF for easy sharing and printing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-label" style="text-align:center;">FAQ</div>
+  <h2 class="section-title" style="text-align:center;">Frequently asked questions</h2>
+  <p class="section-desc" style="margin-bottom:40px;text-align:center;margin-left:auto;margin-right:auto;">Got questions about converting JPG to PDF? Here are answers to the most common ones.</p>
+
+  <div class="faq-list">
+    <div class="faq-item open">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Is the JPG to PDF converter free?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes, completely free with no account or usage limits.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Can I convert multiple JPGs into one PDF?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes. Select multiple JPG files and they'll all be combined into a single multi-page PDF.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Will my image quality be preserved?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes. Images are embedded at their original resolution without any quality loss.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Are my photos kept private?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes. All processing is browser-based — your images never leave your device.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Does it support PNG, GIF, or other formats?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">This tool is optimized for JPG/JPEG files. Use our PNG to PDF tool for PNG images.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Does it work on iPhone and Android?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes, the converter works in any modern mobile browser.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section style="background:var(--rust);padding:50px 32px;text-align:center;">
+  <div style="max-width:640px;margin:0 auto;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:white;font-weight:900;margin-bottom:12px;letter-spacing:-0.02em;">Need other PDF tools?<br><em style="font-style:italic;opacity:0.85;">Explore our full suite.</em></h2>
+    <p style="color:rgba(255,255,255,0.75);font-size:1.05rem;line-height:1.6;margin-bottom:24px;">Convert, merge, split, compress, and more — all in one place.</p>
+    <a href="../index.html#tools" class="btn-primary" style="background:white;color:var(--rust);font-size:0.9rem;padding:10px 28px;">Browse All Tools →</a>
+  </div>
+</section>
+
+<script src="../shared.js"></script>
+<script>
+function toggleFAQ(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
+<script>
+let selectedFiles = [];
+let pdfBlob = null;
+
+const uploadZone = document.getElementById('upload-zone');
+const fileInput = document.getElementById('file-input');
+const fileInfo = document.getElementById('file-info');
+const fileCount = document.getElementById('file-count');
+const fileList = document.getElementById('file-list');
+const resultSection = document.getElementById('result-section');
+const downloadBtn = document.getElementById('download-btn');
+
+setupDragAndDrop(uploadZone, fileInput, handleFileSelect);
+
+fileInput.addEventListener('change', (e) => {
+  if (e.target.files.length > 0) {
+    handleFileSelect(Array.from(e.target.files));
+  }
+});
+
+function handleFileSelect(files) {
+  hideError();
+  selectedFiles = Array.isArray(files) ? files : [files];
+  
+  // Filter only JPG/JPEG files
+  selectedFiles = selectedFiles.filter(file => 
+    file.type === 'image/jpeg' || file.name.toLowerCase().endsWith('.jpg') || file.name.toLowerCase().endsWith('.jpeg')
+  );
+
+  if (selectedFiles.length === 0) {
+    showError('Please select valid JPG/JPEG image files.');
+    return;
+  }
+
+  // Display file info
+  fileCount.textContent = `${selectedFiles.length} image(s) selected`;
+  fileList.textContent = selectedFiles.map(f => f.name).join(', ');
+  fileInfo.classList.add('active');
+  resultSection.classList.remove('active');
+
+  // Start conversion
+  convertToPDF();
+}
+
+async function convertToPDF() {
+  try {
+    showProgress();
+    hideError();
+
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF();
+    
+    for (let i = 0; i < selectedFiles.length; i++) {
+      const file = selectedFiles[i];
+      const img = await loadImage(file);
+      
+      // Calculate dimensions to fit page
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = img.width;
+      const imgHeight = img.height;
+      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+      const width = imgWidth * ratio;
+      const height = imgHeight * ratio;
+      const x = (pdfWidth - width) / 2;
+      const y = (pdfHeight - height) / 2;
+
+      if (i > 0) pdf.addPage();
+      pdf.addImage(img, 'JPEG', x, y, width, height);
+    }
+
+    pdfBlob = pdf.output('blob');
+    showResult();
+  } catch (error) {
+    showError('Error converting images to PDF: ' + error.message);
+  }
+}
+
+function loadImage(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+downloadBtn.addEventListener('click', () => {
+  if (pdfBlob) {
+    const filename = `converted-${Date.now()}.pdf`;
+    downloadFile(pdfBlob, filename);
+  }
+});
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5z"/></svg>
+          </div>
+          <span class="logo-text">Convert <span>PDF</span></span>
+        </div>
+        <p>A professional-grade PDF converter for everyone. Fast, private, and completely browser-based — no software required.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Convert From PDF</h4>
+        <ul>
+          <li><a href="#">PDF to Word</a></li>
+          <li><a href="#">PDF to Excel</a></li>
+          <li><a href="#">PDF to PowerPoint</a></li>
+          <li><a href="#">PDF to JPG</a></li>
+          <li><a href="#">PDF to PNG</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Convert to PDF</h4>
+        <ul>
+          <li><a href="#">Word to PDF</a></li>
+          <li><a href="#">Excel to PDF</a></li>
+          <li><a href="#">JPG to PDF</a></li>
+          <li><a href="#">PPT to PDF</a></li>
+          <li><a href="#">AutoCAD to PDF</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>PDF Tools</h4>
+        <ul>
+          <li><a href="#">Merge PDF</a></li>
+          <li><a href="#">Split PDF</a></li>
+          <li><a href="#">Compress PDF</a></li>
+          <li><a href="#">Protect PDF</a></li>
+          <li><a href="#">Repair PDF</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Convert PDF. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

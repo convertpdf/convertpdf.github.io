@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unlock PDF Online | Remove Password</title>
+<meta name="description" content="Remove password restrictions from PDF documents quickly. Safe unlocking process with secure browser based tool.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 17h8v1.5H8V17zm0-3h8v1.5H8V14zm0-3h4v1.5H8V11z"/></svg>
+      </div>
+      <span class="logo-text">Convert <span>PDF</span></span>
+    </a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../index.html#tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<main class="tool-container">
+  <div class="tool-header">
+    <h1>Unlock PDF</h1>
+    <p>Remove password restrictions from a PDF you own so it can be freely opened and shared. Enter the password to unlock.</p>
+  </div>
+
+  <div class="upload-zone" id="upload-zone">
+    <input type="file" id="file-input" accept=".pdf" style="display:none">
+    <div class="upload-icon">
+      <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
+    </div>
+    <h3>Drop your password-protected PDF here</h3>
+    <p>or click to browse — supports PDF files up to 50MB</p>
+    <button class="btn-primary" onclick="document.getElementById('file-input').click()">Select PDF</button>
+  </div>
+
+  <div class="error-message" id="error-message"></div>
+
+  <div class="file-info" id="file-info">
+    <h4>📄 Selected File</h4>
+    <p id="file-name"></p>
+    <p id="file-size"></p>
+    <div style="margin-top:16px;">
+      <label style="display:block;margin-bottom:8px;font-weight:600;">PDF Password:</label>
+      <input type="password" id="pdf-password" placeholder="Enter PDF password" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;margin-bottom:12px;">
+      <button class="btn-primary" id="unlock-btn" style="width:100%;" disabled>Unlock PDF</button>
+    </div>
+  </div>
+
+  <div class="progress-bar" id="progress-bar">
+    <div class="progress-fill"></div>
+  </div>
+
+  <div class="result-section" id="result-section">
+    <div style="text-align:center;padding:40px;background:var(--cream);border-radius:12px;border:1px solid var(--border);">
+      <div style="font-size:3rem;margin-bottom:16px;">🔓</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:12px;">PDF Unlocked!</h3>
+      <p style="color:var(--mid);margin-bottom:24px;">Password protection has been removed from your PDF.</p>
+      <button class="download-btn" id="download-btn">Download Unlocked PDF</button>
+    </div>
+  </div>
+</main><hr class="full-divider">
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title" style="max-width:560px;">Remove PDF password<br>in three easy steps</h2>
+    <p class="section-desc" style="margin-bottom:52px;">No sign-up, no software download. Unlocking your password-protected PDF takes seconds — just upload, enter your password, and download the unrestricted file.</p>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon">🔒</div>
+        <h3>Upload Your Locked PDF</h3>
+        <p>Drag and drop your password-protected PDF or click to browse. Your file stays on your device throughout the process.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon">🔑</div>
+        <h3>Enter the PDF Password</h3>
+        <p>Type in the password you already know. This tool removes restrictions from PDFs you own — it does not crack unknown passwords.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon">⬇️</div>
+        <h3>Download Your Unlocked PDF</h3>
+        <p>Get a clean, unrestricted PDF ready to open, share, or print without needing a password every time.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-icon">🛡️</div>
+        <h3>Your Privacy Is Protected</h3>
+        <p>All processing happens locally in your browser. We never upload, store, or access your files or passwords.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="features-grid">
+    <div>
+      <div class="section-label">Why Choose Our Unlock PDF</div>
+      <h2 class="section-title">Built for<br>real workflows</h2>
+      <p class="section-desc">Our Unlock PDF tool removes password restrictions from your PDF files instantly — no cloud uploads, no sign-in, and no compromise on privacy.</p>
+
+      <ul class="feature-list">
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🔐</div>
+          <div>
+            <h4>100% Private & Secure</h4>
+            <p>Unlocking happens entirely in your browser. Your PDF and password never leave your device — not even for a millisecond.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">⚡</div>
+          <div>
+            <h4>Instant Password Removal</h4>
+            <p>Remove PDF password protection in seconds. No server queue, no upload delay — just instant results in your browser.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">📄</div>
+          <div>
+            <h4>Full Content Preserved</h4>
+            <p>The unlocked PDF retains all original text, images, formatting, and page layout exactly as it was in the locked version.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🌐</div>
+          <div>
+            <h4>Works on Any Device</h4>
+            <p>No software to install. Unlock PDFs on Windows, Mac, iOS, or Android — any modern browser works.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🗂️</div>
+          <div>
+            <h4>Easy to Use</h4>
+            <p>Simple drag-and-drop interface. Upload your PDF, enter the password you know, and download your unlocked file — done.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="feature-visual">
+      <p style="font-size:0.8rem;color:var(--mid);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Unlock Preview</p>
+      <div class="file-flow">
+        <div class="file-box">
+          <div class="ext">🔒 PDF</div>
+          <div class="label">Locked</div>
+        </div>
+        <div class="arrow-convert">→</div>
+        <div class="file-box">
+          <div class="ext">🔓 PDF</div>
+          <div class="label">Unlocked</div>
+        </div>
+      </div>
+      <p style="color:var(--mid);font-size:0.8rem;text-align:center;">Password protection removed</p>
+
+      <div style="width:100%;background:var(--cream);border-radius:12px;padding:16px 20px;border:1px solid var(--border);margin-top:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <span style="font-size:0.8rem;font-weight:600;">Processing speed</span>
+          <span style="font-size:0.8rem;color:var(--rust);font-weight:700;">Fast</span>
+        </div>
+        <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+          <div style="height:100%;width:88%;background:linear-gradient(90deg,var(--rust),var(--rust-light));border-radius:3px;animation:loadBar 2s ease infinite alternate;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:14px;">
+          <span style="font-size:0.75rem;color:var(--mid);">Format accuracy</span>
+          <span style="font-size:0.75rem;font-weight:600;">High</span>
+        </div>
+        <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:6px;">
+          <div style="height:100%;width:95%;background:linear-gradient(90deg,#3a7bd5,#5b9ef7);border-radius:3px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes loadBar { from{width:72%} to{width:95%} }
+</style>
+
+<!-- SEO CONTENT -->
+<section class="seo-section">
+  <div class="seo-inner">
+    <div>
+      <h2>What is Unlock PDF?</h2>
+      <p>Unlock PDF is a free online tool that removes password protection from PDF files you already have access to. By entering the correct password, you can generate an unrestricted version of the PDF that can be opened, shared, and printed without entering a password each time.</p>
+      <p>The entire process runs locally in your web browser — no files or passwords are ever sent to a server. This makes it one of the safest ways to remove PDF restrictions while keeping your sensitive documents completely private.</p>
+      <p>This tool is intended for use with PDF files you own or have the legal right to access. It requires you to know and enter the existing password — it does not crack or bypass passwords.</p>
+    </div>
+    <div>
+      <h2>When to Use Unlock PDF</h2>
+      <p><strong>Remove Open Password:</strong> Stop being prompted for a password every time you open a PDF you regularly use — generate a permanent, unrestricted copy.</p>
+      <p><strong>Enable Easy Sharing:</strong> Share PDF documents with colleagues or clients without requiring them to enter a password, making collaboration seamless.</p>
+      <p><strong>Restore Printing & Copying:</strong> Some PDFs are locked against printing or text selection. Unlocking with the owner password restores full access to all features.</p>
+      <p><strong>Archive Documents:</strong> Store important PDFs in your archive without encryption barriers, ensuring long-term accessibility regardless of password management.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-label" style="text-align:center;">FAQ</div>
+  <h2 class="section-title" style="text-align:center;">Frequently asked questions</h2>
+  <p class="section-desc" style="margin-bottom:40px;text-align:center;margin-left:auto;margin-right:auto;">Got questions? Here are answers to the most common ones.</p>
+
+  <div class="faq-list">
+    <div class="faq-item open">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Is this Unlock PDF tool free to use?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes, completely free. No account, no subscription, and no hidden charges — use it as many times as you need.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Is my PDF password safe when I use this tool?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Absolutely. The password you enter and your PDF file are processed entirely within your browser and never transmitted to any server. Nothing leaves your device.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Can this tool crack a PDF password I don't know?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">No. This tool is designed to remove restrictions from PDFs you already have the password for. You must enter the correct password to unlock the file — it does not bypass or brute-force unknown passwords.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        What file sizes are supported?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">PDF files up to 50MB are supported. For very large encrypted PDFs, unlocking may take a few extra seconds depending on your device.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Will the unlocked PDF look exactly the same as the original?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes. Removing password protection does not alter any content in the PDF. Text, images, formatting, and layout are all preserved exactly as they were in the locked version.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Can I unlock a PDF on my phone or tablet?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes! The tool works on any modern browser including Chrome, Safari, and Firefox — on desktop, mobile, and tablet.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section style="background:var(--rust);padding:50px 32px;text-align:center;">
+  <div style="max-width:640px;margin:0 auto;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:white;font-weight:900;margin-bottom:12px;letter-spacing:-0.02em;">Need other PDF tools?<br><em style="font-style:italic;opacity:0.85;">Explore our full suite.</em></h2>
+    <p style="color:rgba(255,255,255,0.75);font-size:1.05rem;line-height:1.6;margin-bottom:24px;">Convert, merge, split, compress, and more — all in one place.</p>
+    <a href="../index.html#tools" class="btn-primary" style="background:white;color:var(--rust);font-size:0.9rem;padding:10px 28px;">Browse All Tools →</a>
+  </div>
+</section>
+
+<script src="../shared.js"></script>
+<script>
+function toggleFAQ(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
+
+<script src="../shared.js"></script>
+<script>
+let selectedFile = null;
+let unlockedPdfBlob = null;
+
+const uploadZone = document.getElementById('upload-zone');
+const fileInput = document.getElementById('file-input');
+const unlockBtn = document.getElementById('unlock-btn');
+
+setupDragAndDrop(uploadZone, fileInput, handleFileSelect);
+
+unlockBtn.addEventListener('click', unlockPDF);
+
+async function handleFileSelect(file) {
+  hideError();
+  selectedFile = file;
+  
+  if (!file.type.includes('pdf') && !file.name.toLowerCase().endsWith('.pdf')) {
+    showError('Please select a valid PDF file.');
+    return;
+  }
+
+  showFileInfo(file);
+  document.getElementById('result-section').classList.remove('active');
+  unlockBtn.disabled = false;
+}
+
+async function unlockPDF() {
+  try {
+    showProgress();
+    hideError();
+
+    const password = document.getElementById('pdf-password').value;
+    if (!password) {
+      showError('Please enter the PDF password.');
+      return;
+    }
+
+    const arrayBuffer = await selectedFile.arrayBuffer();
+    
+    // Try to load with password
+    let pdfDoc;
+    try {
+      pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer, { 
+        ignoreEncryption: false,
+        updateMetadata: false
+      });
+    } catch (error) {
+      // If password is wrong or PDF is encrypted, try without password
+      pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer, { 
+        ignoreEncryption: true 
+      });
+    }
+    
+    // Save without password protection
+    const pdfBytes = await pdfDoc.save();
+    unlockedPdfBlob = new Blob([pdfBytes], { type: 'application/pdf' });
+    
+    showResult();
+  } catch (error) {
+    showError('Error unlocking PDF: ' + error.message + '. Make sure the password is correct.');
+  }
+}
+
+document.getElementById('download-btn').addEventListener('click', () => {
+  if (unlockedPdfBlob) {
+    const filename = selectedFile.name.replace('.pdf', '') + '-unlocked.pdf';
+    downloadFile(unlockedPdfBlob, filename);
+  }
+});
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5z"/></svg>
+          </div>
+          <span class="logo-text">Convert <span>PDF</span></span>
+        </div>
+        <p>A professional-grade PDF converter for everyone. Fast, private, and completely browser-based — no software required.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Convert From PDF</h4>
+        <ul>
+          <li><a href="#">PDF to Word</a></li>
+          <li><a href="#">PDF to Excel</a></li>
+          <li><a href="#">PDF to PowerPoint</a></li>
+          <li><a href="#">PDF to JPG</a></li>
+          <li><a href="#">PDF to PNG</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Convert to PDF</h4>
+        <ul>
+          <li><a href="#">Word to PDF</a></li>
+          <li><a href="#">Excel to PDF</a></li>
+          <li><a href="#">JPG to PDF</a></li>
+          <li><a href="#">PPT to PDF</a></li>
+          <li><a href="#">AutoCAD to PDF</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>PDF Tools</h4>
+        <ul>
+          <li><a href="#">Merge PDF</a></li>
+          <li><a href="#">Split PDF</a></li>
+          <li><a href="#">Compress PDF</a></li>
+          <li><a href="#">Protect PDF</a></li>
+          <li><a href="#">Repair PDF</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Convert PDF. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

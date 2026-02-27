@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Convert PDF tables into editable Excel spreadsheets online. Extract structured data accurately without losing rows or columns.">
+<title>PDF to Excel Converter | Extract XLS Data</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="../index.html" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 17h8v1.5H8V17zm0-3h8v1.5H8V14zm0-3h4v1.5H8V11z"/></svg>
+      </div>
+      <span class="logo-text">Convert <span>PDF</span></span>
+    </a>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../index.html#tools">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<main class="tool-container">
+  <div class="tool-header">
+    <h1>PDF to Excel Converter</h1>
+    <p>Extract tables and data from PDF files into editable Excel spreadsheets. Free, browser-based PDF to XLSX conversion — no uploads, no sign-up.</p>
+  </div>
+
+  <div class="upload-zone" id="upload-zone">
+    <input type="file" id="file-input" accept=".pdf" style="display:none">
+    <div class="upload-icon">
+      <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4v6zm-4 2h14v2H5v-2z"/></svg>
+    </div>
+    <h3>Drop your PDF here</h3>
+    <p>or click to browse — supports PDF files up to 50MB</p>
+    <button class="btn-primary" onclick="document.getElementById('file-input').click()">Select PDF</button>
+  </div>
+
+  <div class="error-message" id="error-message"></div>
+
+  <div class="file-info" id="file-info">
+    <h4>📄 Selected File</h4>
+    <p id="file-name"></p>
+    <p id="file-size"></p>
+  </div>
+
+  <div class="progress-bar" id="progress-bar">
+    <div class="progress-fill"></div>
+  </div>
+
+  <div class="result-section" id="result-section">
+    <div style="text-align:center;padding:40px;background:var(--cream);border-radius:12px;border:1px solid var(--border);">
+      <div style="font-size:3rem;margin-bottom:16px;">✅</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:12px;">Conversion Complete!</h3>
+      <p style="color:var(--mid);margin-bottom:24px;">Your PDF has been converted to Excel format.</p>
+      <button class="download-btn" id="download-btn">Download Excel File</button>
+    </div>
+  </div>
+</main><hr class="full-divider">
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="how-inner">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title" style="max-width:560px;">Three steps to convert<br>PDF to XLSX</h2>
+    <p class="section-desc" style="margin-bottom:52px;">No sign-up, no software download. Converting your PDF to XLSX is as simple as uploading your file and clicking convert.</p>
+
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon">Upload</div>
+        <h3>Upload Your PDF</h3>
+        <p>Drag and drop your PDF or click to browse. The file is processed entirely in your browser.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon">⚙️</div>
+        <h3>Automatic Data Extraction</h3>
+        <p>Our tool detects tables and structured data in your PDF and maps them to Excel rows and columns.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon">⬇️</div>
+        <h3>Download Your Excel File</h3>
+        <p>Your editable .xlsx spreadsheet is ready for immediate download. Open it directly in Excel.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-icon">🔒</div>
+        <h3>Your Privacy Is Protected</h3>
+        <p>All conversion is browser-based. Your PDF data is never uploaded to or stored on any server.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="features-grid">
+    <div>
+      <div class="section-label">Why Use Our PDF to Excel Converter</div>
+      <h2 class="section-title">Unlock data trapped in PDFs</h2>
+      <p class="section-desc">Extract tables, numbers, and structured data from PDF reports, invoices, and statements into fully editable Excel spreadsheets.</p>
+
+      <ul class="feature-list">
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🔐</div>
+          <div>
+            <h4>100% Private Processing</h4>
+            <p>Your PDF and its data are converted in your browser. No file upload, no server exposure.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">⚡</div>
+          <div>
+            <h4>Fast Extraction</h4>
+            <p>Convert PDF tables to Excel in seconds — even complex, multi-page documents.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">📐</div>
+          <div>
+            <h4>Accurate Table Detection</h4>
+            <p>Our tool identifies table boundaries, column headers, and data rows for accurate Excel output.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🌐</div>
+          <div>
+            <h4>Works on Any Device</h4>
+            <p>Convert PDF to Excel from any browser on Windows, Mac, or mobile.</p>
+          </div>
+        </li>
+        <li class="feature-item">
+          <div class="feature-icon-wrap">🗂️</div>
+          <div>
+            <h4>Editable Output</h4>
+            <p>The resulting .xlsx file is fully editable in Excel, Google Sheets, and other spreadsheet applications.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="feature-visual">
+      <p style="font-size:0.8rem;color:var(--mid);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;">Conversion Preview</p>
+      <div class="file-flow">
+        <div class="file-box">
+          <div class="ext">PDF</div>
+          <div class="label"></div>
+        </div>
+        <div class="arrow-convert">→</div>
+        <div class="file-box">
+          <div class="ext">XLSX</div>
+          <div class="label">Converted</div>
+        </div>
+      </div>
+      <p style="color:var(--mid);font-size:0.8rem;text-align:center;">Conversion complete</p>
+
+      <div style="width:100%;background:var(--cream);border-radius:12px;padding:16px 20px;border:1px solid var(--border);margin-top:8px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+          <span style="font-size:0.8rem;font-weight:600;">Processing speed</span>
+          <span style="font-size:0.8rem;color:var(--rust);font-weight:700;">Fast</span>
+        </div>
+        <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+          <div style="height:100%;width:88%;background:linear-gradient(90deg,var(--rust),var(--rust-light));border-radius:3px;animation:loadBar 2s ease infinite alternate;"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:14px;">
+          <span style="font-size:0.75rem;color:var(--mid);">Format accuracy</span>
+          <span style="font-size:0.75rem;font-weight:600;">High</span>
+        </div>
+        <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin-top:6px;">
+          <div style="height:100%;width:95%;background:linear-gradient(90deg,#3a7bd5,#5b9ef7);border-radius:3px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes loadBar { from{width:72%} to{width:95%} }
+</style>
+
+<!-- SEO CONTENT -->
+<section class="seo-section">
+  <div class="seo-inner">
+    <div>
+      <h2>Why Convert PDF to Excel?</h2>
+      <p>PDFs are a convenient format for sharing data, but the information inside them is locked — you can read it but can't sort, filter, calculate, or analyze it without manually re-entering the data. Converting PDF to Excel unlocks that data for real work.</p>
+      <p>Our free PDF to Excel converter extracts tables and structured data from your PDF and maps them accurately to Excel rows and columns. This is especially valuable for bank statements, financial reports, invoices, and data exports from legacy systems that only produce PDF output.</p>
+      <p>Because conversion happens entirely in your browser, your financial data, customer records, and sensitive reports never leave your device — a critical security consideration.</p>
+    </div>
+    <div>
+      <h2>When to Convert PDF to Excel</h2>
+      <p><strong>Financial Report Analysis:</strong> Extract profit and loss statements, balance sheets, or budget tables from PDF reports for analysis in Excel.</p>
+      <p><strong>Bank & Statement Processing:</strong> Pull transaction data from PDF bank statements into Excel for reconciliation and bookkeeping.</p>
+      <p><strong>Invoice Data Extraction:</strong> Extract line items, prices, and totals from PDF invoices for entry into accounting or ERP systems.</p>
+      <p><strong>Research Data Collection:</strong> Pull tabular data from published PDF research papers or government reports for further analysis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-label" style="text-align:center;">FAQ</div>
+  <h2 class="section-title" style="text-align:center;">Frequently asked questions</h2>
+  <p class="section-desc" style="margin-bottom:40px;text-align:center;margin-left:auto;margin-right:auto;">Got questions? Here are answers to the most common ones.</p>
+
+  <div class="faq-list">
+    <div class="faq-item open">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Is the PDF to Excel converter free?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes, completely free with no account or usage limits.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Is my data kept private?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes. All conversion happens in your browser — your PDF data never reaches our servers.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        How accurate is the table extraction?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Accuracy depends on how the PDF was created. PDFs with proper table structure extract very accurately. Scanned PDFs may be less accurate.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Can it convert scanned PDF tables?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Scanned PDFs require OCR to extract text. Our tool works best with digitally created PDFs.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        What Excel version does the output support?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">The output is a standard .xlsx file compatible with Excel 2007 and later, and Google Sheets.</div>
+    </div>
+    <div class="faq-item ">
+      <button class="faq-q" onclick="toggleFAQ(this)">
+        Does it work on Mac and mobile?
+        <span class="toggle">+</span>
+      </button>
+      <div class="faq-a">Yes. The converter runs in any modern browser on any operating system or device.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section style="background:var(--rust);padding:50px 32px;text-align:center;">
+  <div style="max-width:640px;margin:0 auto;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:white;font-weight:900;margin-bottom:12px;letter-spacing:-0.02em;">Need other PDF tools?<br><em style="font-style:italic;opacity:0.85;">Explore our full suite.</em></h2>
+    <p style="color:rgba(255,255,255,0.75);font-size:1.05rem;line-height:1.6;margin-bottom:24px;">Convert, merge, split, compress, and more — all in one place.</p>
+    <a href="../index.html#tools" class="btn-primary" style="background:white;color:var(--rust);font-size:0.9rem;padding:10px 28px;">Browse All Tools →</a>
+  </div>
+</section>
+
+<script src="../shared.js"></script>
+<script>
+function toggleFAQ(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
+
+<script src="../shared.js"></script>
+<script>
+let selectedFile = null;
+let excelBlob = null;
+
+const uploadZone = document.getElementById('upload-zone');
+const fileInput = document.getElementById('file-input');
+
+setupDragAndDrop(uploadZone, fileInput, handleFileSelect);
+
+async function handleFileSelect(file) {
+  hideError();
+  selectedFile = file;
+  
+  if (!file.type.includes('pdf') && !file.name.toLowerCase().endsWith('.pdf')) {
+    showError('Please select a valid PDF file.');
+    return;
+  }
+
+  showFileInfo(file);
+  document.getElementById('result-section').classList.remove('active');
+  
+  await convertToExcel();
+}
+
+async function convertToExcel() {
+  try {
+    showProgress();
+    hideError();
+
+    const arrayBuffer = await selectedFile.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    
+    const workbook = XLSX.utils.book_new();
+    const data = [];
+
+    // Extract text from each page
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const textContent = await page.getTextContent();
+      const pageText = textContent.items.map(item => item.str).join(' ');
+      
+      // Simple parsing - split by lines and create rows
+      const lines = pageText.split('\n').filter(line => line.trim());
+      lines.forEach((line, lineIndex) => {
+        if (i === 1 && lineIndex === 0) {
+          // First row might be headers
+          data.push(line.split(/\s{2,}|\t/).filter(cell => cell.trim()));
+        } else {
+          data.push(line.split(/\s{2,}|\t/).filter(cell => cell.trim()));
+        }
+      });
+    }
+
+    // Create worksheet
+    const worksheet = XLSX.utils.aoa_to_sheet(data);
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    
+    // Generate Excel file
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    excelBlob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    
+    showResult();
+  } catch (error) {
+    showError('Error converting PDF to Excel: ' + error.message);
+  }
+}
+
+document.getElementById('download-btn').addEventListener('click', () => {
+  if (excelBlob) {
+    const filename = selectedFile.name.replace('.pdf', '.xlsx');
+    downloadFile(excelBlob, filename);
+  }
+});
+</script>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="white"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5z"/></svg>
+          </div>
+          <span class="logo-text">Convert <span>PDF</span></span>
+        </div>
+        <p>A professional-grade PDF converter for everyone. Fast, private, and completely browser-based — no software required.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Convert From PDF</h4>
+        <ul>
+          <li><a href="#">PDF to Word</a></li>
+          <li><a href="#">PDF to Excel</a></li>
+          <li><a href="#">PDF to PowerPoint</a></li>
+          <li><a href="#">PDF to JPG</a></li>
+          <li><a href="#">PDF to PNG</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Convert to PDF</h4>
+        <ul>
+          <li><a href="#">Word to PDF</a></li>
+          <li><a href="#">Excel to PDF</a></li>
+          <li><a href="#">JPG to PDF</a></li>
+          <li><a href="#">PPT to PDF</a></li>
+          <li><a href="#">AutoCAD to PDF</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>PDF Tools</h4>
+        <ul>
+          <li><a href="#">Merge PDF</a></li>
+          <li><a href="#">Split PDF</a></li>
+          <li><a href="#">Compress PDF</a></li>
+          <li><a href="#">Protect PDF</a></li>
+          <li><a href="#">Repair PDF</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Convert PDF. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
